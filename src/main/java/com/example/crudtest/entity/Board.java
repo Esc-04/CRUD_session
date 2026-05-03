@@ -2,41 +2,40 @@ package com.example.crudtest.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 public class Board {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = __________)
     private Long id;
 
-    @Column(nullable = false)   // null 값 허용 X
+    @Column(nullable = ______)
     private String title;
 
-    @Column(nullable = false)   // null 값 허용 X
+    @Column(nullable = ______)
     private String content;
 
-    @Column(nullable = false)   // null 값 허용 X
+    @Column(nullable = ______)
     private String writer;
 
-    @Column(nullable = true)    // default 값
+    @Column(nullable = ______)
     private String password;
 
-    // 1:1 (BoardDetail)
-    @OneToOne(mappedBy = "board", cascade = CascadeType.ALL)
+    // 1:N 관계
+    @OneToMany(mappedBy = "_______", cascade = __________)
+    private java.util.List<Comment> comments;
+
+    // 1:1 관계
+    @OneToOne(mappedBy = "_______", cascade = __________)
     private BoardDetail boardDetail;
 
-    // 1:N (Comment)
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<Comment> comments;
-
-    // M:N (Tag)
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<BoardTag> boardTags;
+    // N:M → 중간테이블
+    @OneToMany(mappedBy = "_______")
+    private java.util.List<BoardTag> boardTags;
 }

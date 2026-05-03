@@ -2,8 +2,8 @@ package com.example.crudtest.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -14,11 +14,12 @@ import java.util.List;
 public class Tag {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = __________)
     private Long id;
 
+    @Column(nullable = ______, unique = ______)
     private String name;
 
-    @OneToMany(mappedBy = "tag")
+    @OneToMany(mappedBy = "_______")
     private List<BoardTag> boardTags;
 }

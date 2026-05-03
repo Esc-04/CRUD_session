@@ -12,20 +12,23 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CommentService {
+
     private final CommentRepository commentRepository;
     private final BoardRepository boardRepository;
 
     // 댓글 생성
     public Comment createComment(Long boardId, Comment comment) {
-        Board board = boardRepository.findById(boardId)
+
+        Board board = ________________________________
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
-        comment.setBoard(board);
-        return commentRepository.save(comment);
+        comment.setBoard(__________);
+
+        return ________________________________;
     }
 
-    // 특정 게시글 댓글 조회
+    // 댓글 조회
     public List<Comment> getComments(Long boardId) {
-        return commentRepository.findByBoardId(boardId);
+        return ________________________________;
     }
 }

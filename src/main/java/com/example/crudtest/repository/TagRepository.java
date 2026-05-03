@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface TagRepository extends JpaRepository<Tag, Long> {
-    Optional<Tag> findByName(String name);
+public interface TagRepository extends JpaRepository<Tag, ______> {
+
+    // 태그 이름으로 조회
+    Optional<Tag> findBy____________(String name);
 }

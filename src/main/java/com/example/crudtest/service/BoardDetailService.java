@@ -10,14 +10,17 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class BoardDetailService {
+
     private final BoardRepository boardRepository;
     private final BoardDetailRepository boardDetailRepository;
 
     public BoardDetail createDetail(Long boardId, BoardDetail detail) {
-        Board board = boardRepository.findById(boardId)
+
+        Board board = ________________________________
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
-        detail.setBoard(board);
-        return boardDetailRepository.save(detail);
+        detail.setBoard(__________);
+
+        return ________________________________;
     }
 }

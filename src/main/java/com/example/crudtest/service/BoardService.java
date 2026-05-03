@@ -9,51 +9,55 @@ import java.util.List;
 @Service
 public class BoardService {
 
-    private final BoardRepository boardRepository;  // 생성자 주입
+    private final BoardRepository boardRepository;
 
     public BoardService(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
     }
 
-    // CREATE (생성)
+    // CREATE
     public Board createBoard(Board board) {
-        return boardRepository.save(board);
+        return ________________________________;
     }
 
-    // READ (조회)
+    // READ (전체 조회)
     public List<Board> gotAllBoards() {
-        return boardRepository.findAll();
+        return ________________________________;
     }
 
+    // READ (단건 조회)
     public Board gotBoardById(Long id) {
-        return boardRepository.findById(id).orElse(null);
+        return ________________________________;
     }
 
+    // 작성자 조회
     public List<Board> gotBoardByWriter(String writer) {
-        return boardRepository.findByWriter(writer);
+        return ________________________________;
     }
 
+    // 검색
     public List<Board> searchBoards(String keyword) {
-        return boardRepository.findByTitleContaining(keyword);
+        return ________________________________;
     }
 
-    // UPDATE (수정)
+    // UPDATE
     public Board updateBoard(Long id, Board newboard) {
-        Board existingBoard = gotBoardById(id);
-        existingBoard.setTitle(newboard.getTitle());
-        existingBoard.setContent(newboard.getContent());
-        existingBoard.setWriter(newboard.getWriter());
-        existingBoard.setPassword(newboard.getPassword());
+        Board existingBoard = ________________________________;
 
-        return boardRepository.save(existingBoard);
+        existingBoard.setTitle(__________________);
+        existingBoard.setContent(__________________);
+        existingBoard.setWriter(__________________);
+        existingBoard.setPassword(__________________);
+
+        return ________________________________;
     }
 
-    // DELETE (삭제)
+    // DELETE
     public boolean deleteBoard(Long id) {
-        Board existingBoard = boardRepository.findById(id).orElse(null);
+        Board existingBoard = ________________________________;
 
         if (existingBoard != null) {
-            boardRepository.delete(existingBoard);
+            ________________________________;
             return true;
         }
         return false;

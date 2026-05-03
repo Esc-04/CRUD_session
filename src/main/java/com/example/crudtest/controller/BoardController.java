@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
-@RequestMapping("/api/boards")
+@RequestMapping("______________")
 public class BoardController {
 
     private final BoardService boardService;
@@ -22,68 +21,63 @@ public class BoardController {
     // CREATE (생성)
     @PostMapping
     public ResponseEntity<Board> createBoard(@RequestBody Board board) {
-        Board createdBoard = boardService.createBoard(board);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdBoard);
+        Board createdBoard = ________________________________;
+        return ResponseEntity.status(______________).body(createdBoard);
     }
 
-    // READ (조회)
+    // READ (전체 조회)
     @GetMapping
     public ResponseEntity<List<Board>> getAllBoards() {
-        List<Board> boards = boardService.gotAllBoards();
+        List<Board> boards = ________________________________;
         return ResponseEntity.ok(boards);
     }
 
-    @GetMapping("/{id}")
+    // READ (단건 조회)
+    @GetMapping("/_______")
     public ResponseEntity<Board> getBoardById(@PathVariable Long id) {
-        Board board = boardService.gotBoardById(id);
+        Board board = ________________________________;
         return ResponseEntity.ok(board);
     }
 
-    @GetMapping("/writer/{writer}")
+    // 작성자 조회
+    @GetMapping("/writer/{_______}")
     public ResponseEntity<List<Board>> gotBoardByWriter(@PathVariable String writer) {
-        List<Board> boards = boardService.gotBoardByWriter(writer);
+        List<Board> boards = ________________________________;
         return ResponseEntity.ok(boards);
     }
 
-    /*
-    // boards?writer=kim
-    @GetMapping
-    public ResponseEntity<List<Board>> getBoardsByWriter(@RequestParam String writer) {
-        List<Board> boards = boardService.gotBoardByWriter(writer);
-        return ResponseEntity.ok(boards);
-    }
-    */
-
-    // boards/search?keyword=스프링
+    // 검색
     @GetMapping("/search")
-    public ResponseEntity<List<Board>> searchBoards(@RequestParam String search) {
-        List<Board> boards = boardService.searchBoards(search);
+    public ResponseEntity<List<Board>> searchBoards(@RequestParam String _______) {
+        List<Board> boards = ________________________________;
         return ResponseEntity.ok(boards);
     }
 
-    // UPDATE (수정)
-    @PutMapping("/{id}")
-    public ResponseEntity<Board> updateBoard(@PathVariable Long id, @RequestBody Board board) {
-        Board existingBoard = boardService.gotBoardById(id);
+    // UPDATE
+    @PutMapping("/_______")
+    public ResponseEntity<Board> updateBoard(@PathVariable Long id,
+                                             @RequestBody Board board) {
+
+        Board existingBoard = ________________________________;
+
         if (existingBoard != null) {
-            Board updatedBoard = boardService.updateBoard(id, board);
+            Board updatedBoard = ________________________________;
             return ResponseEntity.ok(updatedBoard);
-        }
-        else {
-            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.___________().build();
         }
     }
 
-    // DELETE (삭제)
-    @DeleteMapping("/{id}")
+    // DELETE
+    @DeleteMapping("/_______")
     public ResponseEntity<Board> deleteBoard(@PathVariable Long id) {
-        boolean deleted = boardService.deleteBoard(id);
 
-        if(deleted) {
-            return ResponseEntity.noContent().build();
-        }
-        else {
-            return ResponseEntity.notFound().build();
+        boolean deleted = ________________________________;
+
+        if (deleted) {
+            return ResponseEntity.___________().build();
+        } else {
+            return ResponseEntity.___________().build();
         }
     }
 }

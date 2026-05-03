@@ -17,37 +17,38 @@ public class TagService {
 
     private final BoardRepository boardRepository;
     private final TagRepository tagRepository;
-    private final BoardTagRepository boardTagRepository; // ✅ 추가
+    private final BoardTagRepository boardTagRepository;
 
     // 태그 추가
     public void addTag(Long boardId, String tagName) {
-        Board board = boardRepository.findById(boardId)
+
+        Board board = ________________________________
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
         Tag tag = tagRepository.findByName(tagName)
                 .orElseGet(() -> {
                     Tag newTag = new Tag();
                     newTag.setName(tagName);
-                    return tagRepository.save(newTag);
+                    return ________________________________;
                 });
 
         BoardTag boardTag = new BoardTag();
-        boardTag.setBoard(board);
-        boardTag.setTag(tag);
+        boardTag.setBoard(__________);
+        boardTag.setTag(__________);
 
-        boardTagRepository.save(boardTag); // ✅ 수정
+        ________________________________;
     }
 
-    // 태그 전체 조회
+    // 전체 태그 조회
     public List<Tag> getAllTags() {
-        return tagRepository.findAll();
+        return ________________________________;
     }
 
-    // 특정 게시글의 태그 조회
+    // 게시글별 태그 조회
     public List<String> getTagsByBoard(Long boardId) {
-        return boardTagRepository.findByBoardId(boardId)
+        return ________________________________
                 .stream()
-                .map(boardTag -> boardTag.getTag().getName())
+                .map(boardTag -> ________________________________)
                 .toList();
     }
 }

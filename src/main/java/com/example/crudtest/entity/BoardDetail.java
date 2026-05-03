@@ -2,8 +2,8 @@ package com.example.crudtest.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
@@ -12,13 +12,13 @@ import lombok.Setter;
 public class BoardDetail {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = __________)
     private Long id;
 
     private int viewCount;
     private int likeCount;
 
     @OneToOne
-    @JoinColumn(name = "board_id")
+    @JoinColumn(name = "__________")
     private Board board;
 }
