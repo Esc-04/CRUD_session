@@ -9,7 +9,10 @@ public interface BoardRepository extends JpaRepository<Board, Long>{
     // JpaRepository<[Entity], [Entity의 PK 타입]>
 
     // 작성자 기준 조회
-    List<Board> findByWriter(String writer);
+    //과제 전 코드
+    //List<Board> findByWriter(String writer);
+    //과제 후 코드
+    List<Board> findByUserName(String writer);
 
     // 제목 포함 검색
     List<Board> findByTitleContaining(String keyword);

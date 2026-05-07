@@ -22,8 +22,9 @@ public class Board {
     @Column(nullable = false)
     private String content;
 
-    @Column(nullable = false)
-    private String writer;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Column(nullable = true)
     private String password;
@@ -37,6 +38,6 @@ public class Board {
     private BoardDetail boardDetail;
 
     // N:M → 중간테이블
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board" , cascade = CascadeType.ALL)
     private java.util.List<BoardTag> boardTags;
 }

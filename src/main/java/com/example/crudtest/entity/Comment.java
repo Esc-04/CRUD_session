@@ -17,7 +17,9 @@ public class Comment {
     private Long id;
 
     private String content;
-    private String writer;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @JsonIgnore
     @ManyToOne

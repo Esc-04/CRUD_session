@@ -32,7 +32,7 @@ public class BoardService {
 
     // 작성자 조회
     public List<Board> gotBoardByWriter(String writer) {
-        return boardRepository.findByWriter(writer);
+        return boardRepository.findByUserName(writer);
     }
 
     // 검색
@@ -46,7 +46,8 @@ public class BoardService {
 
         existingBoard.setTitle(newboard.getTitle());
         existingBoard.setContent(newboard.getContent());
-        existingBoard.setWriter(newboard.getWriter());
+        //과제 후 수정된 코드
+        existingBoard.setUser(newboard.getUser());
         existingBoard.setPassword(newboard.getPassword());
 
         return boardRepository.save(existingBoard);

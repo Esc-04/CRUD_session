@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -17,7 +19,9 @@ public class BoardDetail {
     private Long id;
 
     private int viewCount;
-    private int likeCount;
+    //과제 추가 구현
+    @OneToMany(mappedBy = "user")
+    private List<BoardLike> boardLikes;
 
     @JsonIgnore
     @OneToOne
