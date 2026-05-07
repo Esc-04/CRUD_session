@@ -17,47 +17,47 @@ public class BoardService {
 
     // CREATE
     public Board createBoard(Board board) {
-        return ________________________________;
+        return boardRepository.save(board);
     }
 
     // READ (전체 조회)
     public List<Board> gotAllBoards() {
-        return ________________________________;
+        return boardRepository.findAll();
     }
 
     // READ (단건 조회)
     public Board gotBoardById(Long id) {
-        return ________________________________;
+        return boardRepository.findById(id).orElse(null);
     }
 
     // 작성자 조회
     public List<Board> gotBoardByWriter(String writer) {
-        return ________________________________;
+        return boardRepository.findByWriter(writer);
     }
 
     // 검색
     public List<Board> searchBoards(String keyword) {
-        return ________________________________;
+        return boardRepository.findByTitleContaining(keyword);
     }
 
     // UPDATE
     public Board updateBoard(Long id, Board newboard) {
-        Board existingBoard = ________________________________;
+        Board existingBoard = gotBoardById(id);
 
-        existingBoard.setTitle(__________________);
-        existingBoard.setContent(__________________);
-        existingBoard.setWriter(__________________);
-        existingBoard.setPassword(__________________);
+        existingBoard.setTitle(newboard.getTitle());
+        existingBoard.setContent(newboard.getContent());
+        existingBoard.setWriter(newboard.getWriter());
+        existingBoard.setPassword(newboard.getPassword());
 
-        return ________________________________;
+        return boardRepository.save(existingBoard);
     }
 
     // DELETE
     public boolean deleteBoard(Long id) {
-        Board existingBoard = ________________________________;
+        Board existingBoard = boardRepository.findById(id).orElse(null);
 
         if (existingBoard != null) {
-            ________________________________;
+            boardRepository.delete(existingBoard);
             return true;
         }
         return false;

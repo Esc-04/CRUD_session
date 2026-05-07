@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("______________")
+@RequestMapping("/api/boards")
 public class BoardController {
 
     private final BoardService boardService;
@@ -21,63 +21,63 @@ public class BoardController {
     // CREATE (생성)
     @PostMapping
     public ResponseEntity<Board> createBoard(@RequestBody Board board) {
-        Board createdBoard = ________________________________;
-        return ResponseEntity.status(______________).body(createdBoard);
+        Board createdBoard = boardService.createBoard(board);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdBoard);
     }
 
     // READ (전체 조회)
     @GetMapping
     public ResponseEntity<List<Board>> getAllBoards() {
-        List<Board> boards = ________________________________;
+        List<Board> boards = boardService.gotAllBoards();
         return ResponseEntity.ok(boards);
     }
 
     // READ (단건 조회)
-    @GetMapping("/_______")
+    @GetMapping("/{id}")
     public ResponseEntity<Board> getBoardById(@PathVariable Long id) {
-        Board board = ________________________________;
+        Board board = boardService.gotBoardById(id);
         return ResponseEntity.ok(board);
     }
 
     // 작성자 조회
-    @GetMapping("/writer/{_______}")
+    @GetMapping("/writer/{writer}")
     public ResponseEntity<List<Board>> gotBoardByWriter(@PathVariable String writer) {
-        List<Board> boards = ________________________________;
+        List<Board> boards = boardService.gotBoardByWriter(writer);
         return ResponseEntity.ok(boards);
     }
 
     // 검색
     @GetMapping("/search")
-    public ResponseEntity<List<Board>> searchBoards(@RequestParam String _______) {
-        List<Board> boards = ________________________________;
+    public ResponseEntity<List<Board>> searchBoards(@RequestParam String keyword) {
+        List<Board> boards = boardService.searchBoards(keyword);
         return ResponseEntity.ok(boards);
     }
 
     // UPDATE
-    @PutMapping("/_______")
+    @PutMapping("/{id}")
     public ResponseEntity<Board> updateBoard(@PathVariable Long id,
                                              @RequestBody Board board) {
 
-        Board existingBoard = ________________________________;
+        Board existingBoard = boardService.gotBoardById(id);
 
         if (existingBoard != null) {
-            Board updatedBoard = ________________________________;
+            Board updatedBoard = boardService.updateBoard(id,board);
             return ResponseEntity.ok(updatedBoard);
         } else {
-            return ResponseEntity.___________().build();
+            return ResponseEntity.notFound().build();
         }
     }
 
     // DELETE
-    @DeleteMapping("/_______")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Board> deleteBoard(@PathVariable Long id) {
 
-        boolean deleted = ________________________________;
+        boolean deleted = boardService.deleteBoard(id);
 
         if (deleted) {
-            return ResponseEntity.___________().build();
+            return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.___________().build();
+            return ResponseEntity.notFound().build();
         }
     }
 }

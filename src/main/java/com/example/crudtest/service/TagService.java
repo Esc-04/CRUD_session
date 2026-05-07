@@ -22,33 +22,33 @@ public class TagService {
     // 태그 추가
     public void addTag(Long boardId, String tagName) {
 
-        Board board = ________________________________
+        Board board = boardRepository.findById(boardId)
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
         Tag tag = tagRepository.findByName(tagName)
                 .orElseGet(() -> {
                     Tag newTag = new Tag();
                     newTag.setName(tagName);
-                    return ________________________________;
+                    return tagRepository.save(newTag);
                 });
 
         BoardTag boardTag = new BoardTag();
-        boardTag.setBoard(__________);
-        boardTag.setTag(__________);
+        boardTag.setBoard(board);
+        boardTag.setTag(tag);
 
-        ________________________________;
+        boardTagRepository.save(boardTag);
     }
 
     // 전체 태그 조회
     public List<Tag> getAllTags() {
-        return ________________________________;
+        return tagRepository.findAll();
     }
 
     // 게시글별 태그 조회
     public List<String> getTagsByBoard(Long boardId) {
-        return ________________________________
+        return boardTagRepository.findByBoardId(boardId)
                 .stream()
-                .map(boardTag -> ________________________________)
+                .map(boardTag -> boardTag.getTag().getName())
                 .toList();
     }
 }

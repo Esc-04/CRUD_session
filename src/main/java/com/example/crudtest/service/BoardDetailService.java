@@ -16,11 +16,11 @@ public class BoardDetailService {
 
     public BoardDetail createDetail(Long boardId, BoardDetail detail) {
 
-        Board board = ________________________________
+        Board board = boardRepository.findById(boardId)
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
-        detail.setBoard(__________);
+        detail.setBoard(board);
 
-        return ________________________________;
+        return boardDetailRepository.save(detail);
     }
 }

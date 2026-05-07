@@ -8,28 +8,28 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("______________")
+@RequestMapping("/api/tags")
 @RequiredArgsConstructor
 public class TagController {
 
     private final TagService tagService;
 
     // 태그 추가
-    @PostMapping("/_______")
+    @PostMapping("/{boardId}")
     public void addTag(@PathVariable Long boardId,
                        @RequestParam String name) {
-        ________________________________;
+        tagService.addTag(boardId,name);
     }
 
     // 전체 태그 조회
     @GetMapping
     public List<Tag> getAllTags() {
-        return ________________________________;
+        return tagService.getAllTags();
     }
 
     // 게시글별 태그 조회
-    @GetMapping("/_______")
+    @GetMapping("/{boardId}")
     public List<String> getTagsByBoard(@PathVariable Long boardId) {
-        return ________________________________;
+        return tagService.getTagsByBoard(boardId);
     }
 }

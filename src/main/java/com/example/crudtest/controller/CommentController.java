@@ -8,22 +8,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("______________")
+@RequestMapping("/api/comments")
 @RequiredArgsConstructor
 public class CommentController {
 
     private final CommentService commentService;
 
     // 댓글 생성
-    @PostMapping("/_______")
+    @PostMapping("/{boardId}")
     public Comment createComment(@PathVariable Long boardId,
                                  @RequestBody Comment comment) {
-        return ________________________________;
+        return commentService.createComment(boardId,comment);
     }
 
     // 댓글 조회
-    @GetMapping("/_______")
+    @GetMapping("/{boardId}")
     public List<Comment> getComments(@PathVariable Long boardId) {
-        return ________________________________;
+        return commentService.getComments(boardId);
     }
 }

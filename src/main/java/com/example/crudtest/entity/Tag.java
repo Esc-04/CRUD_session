@@ -1,5 +1,6 @@
 package com.example.crudtest.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,12 +15,12 @@ import java.util.List;
 public class Tag {
 
     @Id
-    @GeneratedValue(strategy = __________)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = ______, unique = ______)
+    @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "_______")
+    @OneToMany(mappedBy = "tag")
     private List<BoardTag> boardTags;
 }

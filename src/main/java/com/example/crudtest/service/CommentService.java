@@ -19,16 +19,16 @@ public class CommentService {
     // 댓글 생성
     public Comment createComment(Long boardId, Comment comment) {
 
-        Board board = ________________________________
+        Board board = boardRepository.findById(boardId)
                 .orElseThrow(() -> new RuntimeException("게시글 없음"));
 
-        comment.setBoard(__________);
+        comment.setBoard(board);
 
-        return ________________________________;
+        return commentRepository.save(comment);
     }
 
     // 댓글 조회
     public List<Comment> getComments(Long boardId) {
-        return ________________________________;
+        return commentRepository.findByBoardId(boardId);
     }
 }

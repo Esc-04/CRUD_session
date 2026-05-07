@@ -6,16 +6,16 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("______________")
+@RequestMapping("/api/details")
 @RequiredArgsConstructor
 public class BoardDetailController {
 
     private final BoardDetailService boardDetailService;
 
     // 상세 생성
-    @PostMapping("/_______")
+    @PostMapping("/{boardId}")
     public BoardDetail createDetail(@PathVariable Long boardId,
                                     @RequestBody BoardDetail detail) {
-        return ________________________________;
+        return boardDetailService.createDetail(boardId,detail);
     }
 }
