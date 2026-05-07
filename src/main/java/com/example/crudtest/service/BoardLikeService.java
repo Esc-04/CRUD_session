@@ -44,7 +44,7 @@ public class BoardLikeService {
                 .orElseThrow(()->new RuntimeException("해당하는 게실글이 없습니다."));
         return boardLikeRepository.findAllByBoardId(boardId)
                 .stream()
-                .map(u->u.getName())
+                .map(u->u.getUser().getName())
                 .toList();
     }
 }

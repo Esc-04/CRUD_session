@@ -18,12 +18,12 @@ public class BoardLikeController {
     }
 
     //게시글 당 좋아요 수
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/count")
     public Long countLike(@RequestParam Long id){
         return boardLikeService.getLikes(id);
     }
     //게시글에 좋아요 누른 사람 '이름!'
-    @GetMapping("/{boardId}")
+    @GetMapping("/{boardId}/users")
     public List<String> getLikedUserList(@RequestParam Long boardId){
         return boardLikeService.getLikeUsers(boardId);
     }

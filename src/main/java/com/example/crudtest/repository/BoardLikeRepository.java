@@ -11,5 +11,5 @@ public interface BoardLikeRepository extends JpaRepository<BoardLike,Long> {
     //특정 게시글의 좋아요 수
     Long countByboardId(Long boardId);
     //특정 게시글에 좋아요 누른 사람
-    List<User> findAllByBoardId(Long boardId);
+    List<BoardLike> findAllByBoardId(Long boardId);
 }
